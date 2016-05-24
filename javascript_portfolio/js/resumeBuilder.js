@@ -30,8 +30,12 @@ var bio = {
     "location" : "Baton Rouge, LA"
   },
   "welcomeMessage" : "Welcome to my resume page",
-  "skills" : [ "awesomeness", "programming", "teaching", "JS"],
-  "biopic" : "images/fry.jpg"
+  "skills" : [ "Java (4 years)", "SQL (2.5 years)", "XML (1 year)", "Python (1 year)",
+              "CSS (1 year)", "HTML (1 year)", "JavaScript (1 year)", "AngularJS (6 months)",
+              "Git & github", "SharePoint", "Eclipse", " MySQL WorkBench", "SQLite",
+            "Visual Studio", "Apple Xcode", "Android Studio", "Robotics", "Data Analysis",
+          "Testing experience", "Leadership Training", "Agile & Scrum Training"],
+  "biopic" : "images/biopic.jpg"
 }
 
 
@@ -122,16 +126,11 @@ var work = {
 
 
 $("#main").append.bio;
-if(bio.skills.length > 0){
   $("#header").append(HTMLskillsStart);
+for(skill in bio.skills){
 
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-  $("#skills").append(formattedSkill);
-  formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-  $("#skills").append(formattedSkill);
-  formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-  $("#skills").append(formattedSkill);
-  formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+
+  var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
   $("#skills").append(formattedSkill);
 }
 
@@ -206,3 +205,6 @@ function inName(name) {
   return name[0] + " " + name[1];
 }
 //$('#main').append(internationalizeButton);
+
+
+$("#mapDiv").append(googleMap);
