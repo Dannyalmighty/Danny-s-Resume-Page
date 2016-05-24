@@ -40,22 +40,26 @@ var projects = {
     {
       "title" : "ClearPath Robot",
       "dates" : "January 2016 - may 2016",
-      "description" : "Use of computer vision with Kinect sensor and Path Algorithm"
+      "description" : "Use of computer vision with Kinect sensor and Path Algorithm",
+      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
     },
     {
       "title" : "French Quarter Festival Android App",
       "dates" : "May 2015 - September 2015",
-      "description" : "use of Cloud Data, UX/UI Designer, Search Algorithms"
+      "description" : "use of Cloud Data, UX/UI Designer, Search Algorithms",
+      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
     },
     {
       "title" : "DreamLink Android App",
       "dates" : "September 2015 - May 2016",
-      "description" : "Use of Cloud Data, UX/UI Designer, Artificial Intelligence"
+      "description" : "Use of Cloud Data, UX/UI Designer, Artificial Intelligence",
+      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
     },
     {
       "title" : "LightRover Robot",
       "dates" : "August 2015 - December 2015",
-      "description" : "Use of SLAM, Shortest Path Algorithms, Sensors"
+      "description" : "Use of SLAM, Shortest Path Algorithms, Sensors",
+      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
     }
   ]
 }
@@ -107,6 +111,8 @@ var work = {
 
   var formatBioPic = HTMLbioPic.replace("%data%",bio.biopic);
   $("#header").append(formatBioPic);
+  var formatWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+  $("#header").append(formatWelcomeMsg);
   var formattedContact = HTMLmobile.replace("%data%", bio.contacts.mobile);
   $("#topContacts").append(formattedContact);
   formattedContact = HTMLemail.replace("%data%", bio.contacts.email);
@@ -150,11 +156,35 @@ function displayWork(){
 // Call the function to display work because functions do not automatically display.
 displayWork();
 
-$(document).click(function(loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-  logClicks(x,y);
-})
+// Encapsulated functions
+projects.display = function() {
+  for (project in projects.projects) {
+    $("projects").append(HTMLprojectStart);
+
+    var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[projects].title);
+    $(".project-entry:last").append(formattedProjTitle);
+
+    var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[projects].dates);
+    $(".project-entry:last").append(formattedProjDates);
+
+    var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[projects].description);
+    $(".project-entry:last").append(formattedProjDescription);
+
+    if(projects.projects[project].images.length > 0) {
+      for (image in projects.projects[project].images) {
+        var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+        $(".project-entry:last").append(formattedProjImage);
+      }
+    }
+  }
+}
+projects.display();
+
+// $(document).click(function(loc) {
+//   var x = loc.pageX;
+//   var y = loc.pageY;
+//   logClicks(x,y);
+// })
 
 function locationizer(work_obj) {
   var locationArray = [];
@@ -175,4 +205,4 @@ function inName(name) {
   name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
   return name[0] + " " + name[1];
 }
-$('#main').append(internationalizeButton);
+//$('#main').append(internationalizeButton);
