@@ -41,7 +41,7 @@ var projects = {
       "title" : "ClearPath Robot",
       "dates" : "January 2016 - may 2016",
       "description" : "Use of computer vision with Kinect sensor and Path Algorithm",
-      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
+      "images" : []
     },
     {
       "title" : "French Quarter Festival Android App",
@@ -53,13 +53,13 @@ var projects = {
       "title" : "DreamLink Android App",
       "dates" : "September 2015 - May 2016",
       "description" : "Use of Cloud Data, UX/UI Designer, Artificial Intelligence",
-      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
+      "images" : []
     },
     {
       "title" : "LightRover Robot",
       "dates" : "August 2015 - December 2015",
       "description" : "Use of SLAM, Shortest Path Algorithms, Sensors",
-      "images" : ["images/fqf1.png", "images/fqf2.png", "images/fqf3.png"]
+      "images" : []
     }
   ]
 }
@@ -159,15 +159,15 @@ displayWork();
 // Encapsulated functions
 projects.display = function() {
   for (project in projects.projects) {
-    $("projects").append(HTMLprojectStart);
+    $("#projects").append(HTMLprojectStart);
 
-    var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[projects].title);
+    var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
     $(".project-entry:last").append(formattedProjTitle);
 
-    var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[projects].dates);
+    var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
     $(".project-entry:last").append(formattedProjDates);
 
-    var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[projects].description);
+    var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(formattedProjDescription);
 
     if(projects.projects[project].images.length > 0) {
